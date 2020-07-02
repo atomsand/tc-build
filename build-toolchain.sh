@@ -7,29 +7,6 @@ print()
     echo -e "\e[1;31m$*\e[0m"	
 }
 
-print "Install dependencies"
-sudo apt install bc \
-            bison \
-            ca-certificates \
-            ccache \
-            clang \
-            cmake \
-            curl \
-            file \
-            flex \
-            gcc \
-            g++ \
-            git \
-            libelf-dev \
-            libssl-dev \
-            make \
-            ninja-build \
-            python3 \
-            texinfo \
-            u-boot-tools \
-	    lld \
-            zlib1g-dev
-
 print "Start building LLVM"
 ./build-llvm.py \
 	--assertions \
