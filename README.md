@@ -86,6 +86,20 @@ These scripts have been tested in a Docker image of the following distributions,
             uboot-tools
   ```
 
+* ### macOS
+
+  ```
+  brew install binutils \
+               cmake \
+               isl \  
+               libelf \
+               ninja \
+               openssl \
+               z3
+  ```
+
+  Required commit of binutils: [Fix darwin build](https://github.com/crosstool-ng/crosstool-ng/blob/c969be1880f99b6da4d98afd7bda641b7868a717/packages/binutils/2.34/0006-Darwin-Two-fixes-from-Android-NDK-PTHREAD_ONCE_INIT-wcsncasecmp.patch)
+
 Python 3.5.3+ is recommended, as that is what the script has been tested against. These scripts should be distribution agnostic. Please feel free to add different distribution install commands here through a pull request.
 
 ## build-llvm.py
