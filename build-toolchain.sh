@@ -11,13 +11,12 @@ print "Start building LLVM"
 ./build-llvm.py \
 	--assertions \
 	--build-type "Release" \
-	--clang-vendor "AtomSand-$(date +%D)" \
+	--clang-vendor "atomsand-$(date +%D)" \
 	--incremental \
 	--lto "thin" \
 	--targets "AArch64;ARM" \
-	--use-good-revision \
- 	--additional-build-arguments "CLANG_REPOSITORY_STRING=GitHub.com/AtomSand"
-
+	--shallow-clone
+	
 print "Start building binutils"
 ./build-binutils.py \
 	--targets arm aarch64
