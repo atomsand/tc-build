@@ -65,7 +65,7 @@ def parse_parameters(root_folder):
     parser.add_argument("-b",
                         "--branch",
                         help=textwrap.dedent("""\
-                        By default, the script builds the master branch (tip of tree) of LLVM. If you would
+                        By default, the script builds the apple/master branch (tip of tree) of LLVM. If you would
                         like to build an older branch, use this parameter. This may be helpful in tracking
                         down an older bug to properly bisect. This value is just passed along to 'git checkout'
                         so it can be a branch name, tag name, or hash (unless '--shallow-clone' is used, which
@@ -73,7 +73,7 @@ def parse_parameters(root_folder):
 
                         """),
                         type=str,
-                        default="master")
+                        default="apple/master")
     parser.add_argument("-B",
                         "--build-folder",
                         help=textwrap.dedent("""\
@@ -317,7 +317,7 @@ def versioned_binaries(binary_name):
     tot_llvm_ver = 11
     try:
         response = request.urlopen(
-            'https://raw.githubusercontent.com/llvm/llvm-project/master/llvm/CMakeLists.txt'
+            'https://raw.githubusercontent.com/apple/llvm-project/apple/master/llvm/CMakeLists.txt'
         )
         to_parse = None
         data = response.readlines()
@@ -522,11 +522,11 @@ def fetch_llvm_binutils(root_folder, update, shallow, ref):
         extra_args = ()
         if shallow:
             extra_args = ("--depth", "1")
-            if ref != "master":
+            if ref != "apple/master":
                 extra_args += ("--no-single-branch", )
         subprocess.run([
             "git", "clone", *extra_args,
-            "https://github.com/llvm/llvm-project",
+            "https://github.com/apple/llvm-project",
             p.as_posix()
         ],
                        check=True)
