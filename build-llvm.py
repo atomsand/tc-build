@@ -678,10 +678,10 @@ def cc_ld_cmake_defines(dirs, env_vars, stage):
         ranlib = None
     else:
         ar = get_stage1_binary("llvm-ar", dirs)
-        cc = get_stage1_binary("clang", dirs)
+        cc = env_vars.cc
         clang_tblgen = get_stage1_binary("clang-tblgen", dirs)
-        cxx = get_stage1_binary("clang++", dirs)
-        ld = get_stage1_binary("ld.lld", dirs)
+        cxx = env_vars.cxx
+        ld = env_vars.ld
         llvm_tblgen = get_stage1_binary("llvm-tblgen", dirs)
         ranlib = get_stage1_binary("llvm-ranlib", dirs)
 
